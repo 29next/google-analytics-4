@@ -1,0 +1,19 @@
+{% if app.settings.google_analytics_enabled %}
+<script>
+    gtag('event', 'add_to_cart', {
+        value: '{{ value|escapejs }}',
+        currency: '{{ line.price_currency }}',
+        items: [
+            {
+                index: 0,
+                item_id: '{{ product.id|escapejs }}',
+                item_name: '{{ product.get_title|escapejs }}',
+                item_brand: '{{ store_name|escapejs }}',
+                item_category: '{{ line.product.categories.first|default:'Uncategorised'|escapejs }}',
+                price: '{{ line.unit_price_incl_tax_incl_discount|escapejs }}',
+                quantity: '{{ quantity }}'
+            }
+        ]
+    });
+</script>
+{% endif %}

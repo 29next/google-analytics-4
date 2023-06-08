@@ -1,0 +1,61 @@
+{
+    "locations": {
+        "storefront": {
+            "global_header": "snippets/global-header.html",
+            "add_to_cart": "snippets/add-to-cart.html",
+            "view_product": "snippets/view-product.html",
+            "start_checkout": "snippets/start-checkout.html",
+            "complete_checkout": "snippets/complete-checkout.html"
+        }
+    },
+    "settings_schema": [
+        {
+            "name": "google_analytics_enabled",
+            "type": "checkbox",
+            "label": "Enable Google Analytics",
+            "help_text": "Enable Google Analytics on your storefront.",
+            "default": false
+        },
+        {
+            "name": "google_analytics_measurement_id",
+            "type": "text",
+            "label": "Google Analytics Measurement ID",
+            "default": "",
+            "help_text": "",
+            "required": false,
+            "max_length": 250
+        },
+        {
+            "name": "google_adwords_conversion_enabled",
+            "type": "checkbox",
+            "label": "Enable Google Adwords Conversion Tracking",
+            "help_text": "",
+            "default": false
+        },
+        {
+            "name": "google_adwords_conversion_id",
+            "type": "text",
+            "label": "Google Adwords Conversion ID",
+            "default": "",
+            "required": false,
+            "help_text": "Required when Google Adwords Conversion Tracking is enabled.",
+            "max_length": 250
+        },
+        {
+            "name": "google_adwords_conversion_label",
+            "type": "text",
+            "label": "Google Adwords Conversion Label",
+            "default": "",
+            "required": false,
+            "help_text": "Required when Google Adwords Conversion Tracking is enabled.",
+            "max_length": 250
+        },
+        {
+            "name": "google_analytics_debug_mode",
+            "type": "checkbox",
+            "label": "Enable Debug Mode",
+            "help_text": "Debug mode allows you to monitor transactions in real time.",
+            "default": false
+        }
+    ]
+}

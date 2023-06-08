@@ -1,0 +1,36 @@
+{% if app.settings.google_analytics_enabled %}
+<script>
+    gtag('event', 'purchase', {
+        transaction_id: '{{ order.number|escapejs }}',
+        value: {{ order.total_incl_tax }},
+        tax: {{ order.total_tax }},
+        shipping: {{ order.shipping_incl_tax }},
+        currency: '{{ order.currency|escapejs }}',
+        coupon: {% if order.voucherapplication_set.first.voucher.code %}'{{ order.voucherapplication_set.first.voucher.code }}'{% else %}null{% endif %},
+        items: [
+            {% for line in order.lines.all %}
+            {
+                index: {{ forloop.counter0 }},
+                item_id: '{{ line.product.id|escapejs }}',
+                item_name: '{{ line.title|escapejs }}',
+                item_brand: '{{ store_name|escapejs }}',
+                item_category: '{{ line.product.categories.first|default:'Uncategorised'|escapejs }}',
+                price: '{{ line.unit_price_incl_tax_incl_discount|unlocalize|escapejs }}',
+                quantity: {{ line.quantity }}
+            } {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        ]
+    });
+
+    {% if app.settings.google_adwords_conversion_enabled %}
+
+    gtag('event', 'conversion', {
+        send_to: '{{ app.settings.google_adwords_conversion_id }}/{{ app.settings.google_adwords_conversion_label }}',
+        transaction_id: '{{ order.number|escapejs }}',
+        value: {{ order.total_incl_tax }},
+        currency: '{{ order.currency|escapejs }}'
+    });
+
+    {% endif %}
+</script>
+{% endif %}
