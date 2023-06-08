@@ -5,7 +5,7 @@ Google Analytics 4 app for 29 Next that integrates Google Analytics 4 into any s
 Also includes Google Adwords Conversion tracking integration with `gtag()` conversion events.
 
 **Google Analytics 4**
-* [Installs Google Tag Manager](https://support.google.com/analytics/answer/9304153) globally with a setting for your Measurement ID - see `snippets/global-header.html`
+* [Installs Google Analytics 4](https://support.google.com/analytics/answer/9304153) globally with a setting for your Measurement ID - see `snippets/global-header.html`
 
 
 **Google Ecommerce Events**
