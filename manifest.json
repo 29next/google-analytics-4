@@ -1,13 +1,5 @@
 {
-    "locations": {
-        "storefront": {
-            "global_header": "snippets/global-header.html",
-            "add_to_cart": "snippets/add-to-cart.html",
-            "view_product": "snippets/view-product.html",
-            "start_checkout": "snippets/start-checkout.html",
-            "complete_checkout": "snippets/complete-checkout.html"
-        }
-    },
+    "storefront_event_tracker": "tracking.js",
     "settings_schema": [
         {
             "name": "google_analytics_enabled",
