@@ -8,7 +8,10 @@ if (app.settings.google_analytics_enabled) {
         function gtag() { dataLayer.push(arguments); }
         script.onload = function () {
             gtag('js', new Date());
-            var config = { 'debug_mode': app.settings.google_analytics_debug_mode };
+            var config = {
+                'debug_mode': app.settings.google_analytics_debug_mode,
+                'send_page_view': false
+            };
             gtag('config', app.settings.google_analytics_measurement_id, config);
         };
 
@@ -26,6 +29,13 @@ if (app.settings.google_analytics_enabled) {
             });
             return result;
         }
+
+        analytics.subscribe('page_viewed', (event) => {
+            gtag('event', 'page_view', {
+                page_path: window.parent.location.pathname,
+                page_title: window.parent.document.title
+            });
+        });
 
         analytics.subscribe('product_viewed', (event) => {
             gtag('event', 'view_item', {
