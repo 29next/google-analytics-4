@@ -4,7 +4,6 @@ if (app.settings.google_analytics_enabled) {
         script.async = true;
         script.src = "https://www.googletagmanager.com/gtag/js?id=" + app.settings.google_analytics_measurement_id;
         document.head.appendChild(script);
-
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         script.onload = function () {
@@ -29,8 +28,6 @@ if (app.settings.google_analytics_enabled) {
         }
 
         analytics.subscribe('product_viewed', (event) => {
-            analytics.debugHelper(event.event_type, event);
-
             gtag('event', 'view_item', {
                 currency: event.data?.purchase_info?.price?.currency,
                 value: event.data?.purchase_info?.price?.price,
@@ -49,8 +46,6 @@ if (app.settings.google_analytics_enabled) {
         });
 
         analytics.subscribe('product_added_to_cart', (event) => {
-            analytics.debugHelper(event.event_type, event);
-
             gtag('event', 'add_to_cart', {
                 currency: event.data?.purchase_info?.price?.currency,
                 value: event.data?.purchase_info?.price?.price,
@@ -68,8 +63,6 @@ if (app.settings.google_analytics_enabled) {
         });
 
         analytics.subscribe('checkout_started', (event) => {
-            analytics.debugHelper(event.event_type, event);
-
             gtag('event', 'begin_checkout', {
                 currency: event.data?.currency,
                 value: event.data?.total_incl_tax,
@@ -78,10 +71,7 @@ if (app.settings.google_analytics_enabled) {
             });
         });
 
-
         analytics.subscribe('checkout_completed', (event) => {
-            analytics.debugHelper(event.event_type, event);
-
             gtag('event', 'purchase', {
                 currency: event.data?.currency,
                 value: event.data?.total_incl_tax,
@@ -96,12 +86,9 @@ if (app.settings.google_analytics_enabled) {
         if (app.settings.google_adwords_conversion_enabled) {
 
             analytics.subscribe('checkout_completed', (event) => {
-                analytics.debugHelper(event.event_type, event);
-
-                adwordsConversion = app.settings.google_adwords_conversion_id + '/' + app.settings.google_adwords_conversion_label;
-
+                adwordsAccount = app.settings.google_adwords_conversion_id + "/" + app.settings.google_adwords_conversion_label;
                 gtag('event', 'conversion', {
-                    send_to: adwordsConversion,
+                    send_to: adwordsAccount,
                     transaction_id: event.data?.number,
                     value: event.data?.total_tax,
                     currency: event.data?.currency,
