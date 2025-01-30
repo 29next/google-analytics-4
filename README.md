@@ -20,6 +20,6 @@ Also includes Google Adwords Conversion tracking integration with `gtag()` conve
 * [Google Tag for Google Ads Conversion Tracking](https://support.google.com/google-ads/answer/7548399?hl=en)
 
 
-See [tracking.js](/29next/google-analytics-4/blob/main/tracking.js) for a complete detailed view of the implementation.
+See `tracking.js` for a complete detailed view of the implementation.
 
 For more information on individual tracking events, see the [Storefront Theme Event Tracking guide](https://developers.29next.com/docs/themes/event-tracking/).
