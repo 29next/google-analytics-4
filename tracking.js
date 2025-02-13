@@ -38,6 +38,7 @@ if (app.settings.google_analytics_enabled) {
         });
 
         analytics.subscribe('product_viewed', (event) => {
+
             gtag('event', 'view_item', {
                 currency: event.data?.purchase_info?.price?.currency,
                 value: event.data?.purchase_info?.price?.price,
@@ -56,16 +57,18 @@ if (app.settings.google_analytics_enabled) {
         });
 
         analytics.subscribe('product_added_to_cart', (event) => {
+            console.log(event.data);
+            console.log((event.data?.price_incl_tax / event.data?.quantity).toFixed(2));
             gtag('event', 'add_to_cart', {
-                currency: event.data?.purchase_info?.price?.currency,
-                value: event.data?.purchase_info?.price?.price,
+                currency: event.data?.currency,
+                value: event.data?.price_incl_tax,
                 items: [
                     {
                         item_id: event.data?.id,
                         item_name: event.data?.title,
                         sku: event.data?.sku,
                         item_category: event.data?.categories?.length ? event.data.categories[0].name : "",
-                        price: event.data?.purchase_info?.price?.price,
+                        price: (event.data?.price_incl_tax / event.data?.quantity).toFixed(2),
                         quantity: event.data?.quantity
                     }
                 ]
