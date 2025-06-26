@@ -1,5 +1,10 @@
 {
     "storefront_event_tracker": "tracking.js",
+    "locations": {
+        "storefront": {
+            "global_header": "snippets/global-header.html"
+        }
+    },
     "settings_schema": [
         {
             "name": "google_analytics_enabled",
