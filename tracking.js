@@ -39,7 +39,6 @@ if (app.settings.google_analytics_enabled) {
         });
 
         analytics.subscribe('product_added_to_cart', (event) => {
-            console.log(event.data);
             window.top.gtag('event', 'add_to_cart', {
                 currency: event.data?.currency,
                 value: event.data?.price_incl_tax,
