@@ -47,7 +47,6 @@ if (app.settings.google_analytics_enabled) {
                         item_id: event.data?.product_id,
                         item_name: event.data?.product_title,
                         sku: event.data?.sku,
-                        item_category: event.data?.categories?.length ? event.data.categories[0].name : "",
                         price: (event.data?.price_incl_tax / event.data?.quantity).toFixed(2),
                         quantity: event.data?.quantity,
                         page_path: window.top.location.pathname,
